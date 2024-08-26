@@ -1,7 +1,9 @@
 package model;
 
-public class Bibliotecario extends Empleado{
+import services.IBibliotecario;
+import services.IGestionarInventario;
 
+public class Bibliotecario extends Empleado implements IBibliotecario, IGestionarInventario {
 
 
     public Bibliotecario(){
@@ -11,5 +13,12 @@ public class Bibliotecario extends Empleado{
         super(nombre, idEmpleado);
     }
 
+    @Override
+    public void gestionarPrestamo() {
+    }
 
+    @Override
+    public void gestionarItem() {
+        
+    }
 }
