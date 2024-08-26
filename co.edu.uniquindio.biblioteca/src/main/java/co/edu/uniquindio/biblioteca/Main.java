@@ -2,10 +2,55 @@ package co.edu.uniquindio.biblioteca;
 
 import model.*;
 
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
+
 public class Main {
     public static void main(String[] args) {
 
         GestionBiblioteca gestionBiblioteca = inicializarDatos();
+
+        Scanner mensaje = new  Scanner (System.in);
+
+        int opcion;
+
+        do{
+            System.out.println("\nGestión Biblioteca");
+            System.out.println("1.Registrar nuevo empleado");
+            System.out.println("2.Registrar nuevo miembro");
+            System.out.println("3.Registrar nuevo libro");
+            System.out.println("4.Consultar empleados biblioteca");
+            System.out.println("5.Consultar miembros asociados a la biblioteca");
+            System.out.println("6.Consultar libros de la biblioteca");
+            System.out.println("7.Salir");
+            opcion = mensaje.nextInt();
+
+            switch (opcion){
+                case 1:
+                    registrarEmpleado(gestionBiblioteca, mensaje);
+                    break;
+                case 2:
+                    registrarMiembro(gestionBiblioteca, mensaje);
+                    break;
+                case 3:
+                    registrarLibro(gestionBiblioteca, mensaje);
+                    break;
+                case 4:
+                     informacionEmpleados(gestionBiblioteca);
+                    break;
+                case 5:
+                    informacionMiembros(gestionBiblioteca);
+                    break;
+                case 6:
+                    informacionLibros(gestionBiblioteca);
+                    break;
+                case 7:
+                    break;
+            }
+
+        }while (opcion !=7);
+        mensaje.close();
 
 
     }
@@ -96,13 +141,94 @@ public class Main {
         prestamo3.setMiembro(miembro3);
         prestamo3.setLibro(libro4);
 
-
-
-
-
-
+        gestionBiblioteca.getListaPrestamo().add(prestamo1);
+        gestionBiblioteca.getListaPrestamo().add(prestamo2);
+        gestionBiblioteca.getListaPrestamo().add(prestamo3);
 
 
         return gestionBiblioteca;
     }
+
+    private static void registrarEmpleado(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
+        mensaje.nextLine();
+        System.out.println("Ingrese el nombre del nuevo empleado: ");
+        String nombre = mensaje.nextLine();
+        System.out.println("Ingrese el numero de identificación del nuevo empleado: ");
+        String idEmpleado = mensaje.nextLine();
+
+        Empleado nuevoEmpleado = new Empleado();
+        nuevoEmpleado.setNombre(nombre);
+        nuevoEmpleado.setIdEmpleado(idEmpleado);
+
+        gestionBiblioteca.getListaEmpleado().add(nuevoEmpleado);
+
+        System.out.println("Nuevo empleado creado exitosamente");
+    }
+
+    private static void registrarMiembro(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
+        mensaje.nextLine();
+
+        System.out.println("Ingrese el nombre del nuevo miembro asociado a la biblioteca: ");
+        String nombre = mensaje.nextLine();
+        System.out.println("Ingrese el numero de identificación del nuevo miembro asociado a la biblioteca: ");
+        String idMiembro = mensaje.nextLine();
+
+        Miembro nuevoMiembro = new Miembro();
+        nuevoMiembro.setNombre(nombre);
+        nuevoMiembro.setIdMiembro(idMiembro);
+
+        gestionBiblioteca.getListaMiembro().add(nuevoMiembro);
+
+        System.out.println("Nuevo miembro de la Biblioteca creado exitosamente");
+    }
+
+    private static void registrarLibro(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
+        mensaje.nextLine();
+
+        System.out.println("Nuevo registro de libro ");
+        System.out.println("Ingrese el titulo del libro:");
+        String titulo = mensaje.nextLine();
+        System.out.println("Ingrese el nombre del autor: ");
+        String autor = mensaje.nextLine();
+        System.out.println("Ingrese el ISBN del libro: ");
+        String iSBN = mensaje.nextLine();
+        System.out.println("Estado del libro: ");
+        String estado = mensaje.nextLine();
+
+        Libro nuevoLibro = new Libro();
+        nuevoLibro.setTitulo(titulo);
+        nuevoLibro.setAutor(autor);
+        nuevoLibro.setISBN(iSBN);
+        nuevoLibro.setEstado(estado);
+
+        gestionBiblioteca.getListaLibros().add(nuevoLibro);
+
+    }
+
+    private static void informacionEmpleados(GestionBiblioteca gestionBiblioteca){
+        for(Empleado empleado: gestionBiblioteca.getListaEmpleado()){
+            System.out.println(empleado);
+        }
+    }
+
+    private static void informacionMiembros( GestionBiblioteca gestionBiblioteca){
+        for(Miembro miembro: gestionBiblioteca.getListaMiembro()){
+            System.out.println(miembro);
+
+        }
+    }
+
+    private static void informacionLibros(GestionBiblioteca gestionBiblioteca){
+        for(Libro libro: gestionBiblioteca.getListaLibros()){
+            System.out.println(libro);
+        }
+    }
+
+
+
+
+
+
+
+
 }

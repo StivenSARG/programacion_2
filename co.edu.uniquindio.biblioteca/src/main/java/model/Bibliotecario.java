@@ -19,6 +19,6 @@ public class Bibliotecario extends Empleado implements IBibliotecario, IGestiona
 
     @Override
     public void gestionarItem() {
-        
+
     }
 }
