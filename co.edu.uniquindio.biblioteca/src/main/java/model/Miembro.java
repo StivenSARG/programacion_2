@@ -4,12 +4,11 @@ package model;
 public class Miembro {
     public String nombre;
     public String idMiembro;
-    private Prestamo prestamo;
 
     public Miembro (){
     }
 
-    public Miembro(String nombre, String idMiembro, Prestamo prestamo){
+    public Miembro(String nombre, String idMiembro){
         this.nombre = nombre;
         this.idMiembro =idMiembro;
     }
@@ -28,10 +27,5 @@ public class Miembro {
         this.idMiembro = idMiembro;
     }
 
-    public Prestamo getPrestamo() {
-        return prestamo;
-    }
-    public void setPrestamo(Prestamo prestamo) {
-        this.prestamo = prestamo;
-    }
+
 }

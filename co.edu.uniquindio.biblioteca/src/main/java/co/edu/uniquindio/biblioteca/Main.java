@@ -6,6 +6,8 @@ public class Main {
     public static void main(String[] args) {
 
         GestionBiblioteca gestionBiblioteca = inicializarDatos();
+
+
     }
 
     private static GestionBiblioteca inicializarDatos() {
@@ -73,7 +75,26 @@ public class Main {
         gestionBiblioteca.getListaMiembro().add(miembro2);
         gestionBiblioteca.getListaMiembro().add(miembro3);
 
+        Prestamo prestamo1 = new Prestamo();
+        prestamo1.setFechaPrestamo("");
+        prestamo1.setFechaDevolucion("");
 
+        prestamo1.setMiembro(miembro1);
+        prestamo1.setLibro(libro2);
+
+        Prestamo prestamo2 = new Prestamo();
+        prestamo2.setFechaPrestamo("");
+        prestamo2.setFechaDevolucion("");
+
+        prestamo2.setMiembro(miembro2);
+        prestamo2.setLibro(libro3);
+
+        Prestamo prestamo3 = new Prestamo();
+        prestamo3.setFechaPrestamo("");
+        prestamo3.setFechaDevolucion("");
+
+        prestamo3.setMiembro(miembro3);
+        prestamo3.setLibro(libro4);
 
 
 

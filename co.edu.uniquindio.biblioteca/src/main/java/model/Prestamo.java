@@ -3,13 +3,17 @@ package model;
 public class Prestamo {
     public String fechaPrestamo;
     public String fechaDevolucion;
+    private Miembro miembro;
+    private Libro libro;
 
     public Prestamo(){
     }
 
-    public Prestamo (String fechaPrestamo, String fechaDevolucion){
+    public Prestamo (String fechaPrestamo, String fechaDevolucion, Miembro miembro, Libro libro){
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
+        this.miembro = miembro;
+        this.libro = libro;
     }
 
     public String getFechaPrestamo() {
@@ -24,5 +28,19 @@ public class Prestamo {
     }
     public void setFechaDevolucion(String fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public Miembro getMiembro() {
+        return miembro;
+    }
+    public void setMiembro(Miembro miembro) {
+        this.miembro = miembro;
+    }
+
+    public Libro getLibro() {
+        return libro;
+    }
+    public void setLibro(Libro libro) {
+        this.libro = libro;
     }
 }

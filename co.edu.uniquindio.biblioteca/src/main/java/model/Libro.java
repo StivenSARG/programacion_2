@@ -5,7 +5,6 @@ public class Libro {
     public String autor;
     public String iSBN;
     public String estado;
-
     public Libro(){
     }
 
@@ -43,4 +42,5 @@ public class Libro {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
 }
