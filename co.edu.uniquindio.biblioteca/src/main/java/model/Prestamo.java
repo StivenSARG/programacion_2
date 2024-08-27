@@ -47,7 +47,7 @@ public class Prestamo {
     @Override
     public String toString() {
         return "Prestamo" +"\n"+
-                "fechaPrestamo: " + fechaPrestamo +"\n"+
+                "Fecha Prestamo: " + fechaPrestamo +"\n"+
                 "Fecha Devolucion: " + fechaDevolucion + "\n" +
                 "Miembro: " + miembro +"\n"+
                 "libro: " + libro+"\n";

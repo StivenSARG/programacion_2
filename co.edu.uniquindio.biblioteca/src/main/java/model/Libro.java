@@ -46,9 +46,9 @@ public class Libro {
     @Override
     public String toString() {
         return "Libro: " +"\n"+
-                "titulo: " + titulo +"\n"+
-                "autor: " + autor +"\n" +
+                "Titulo: " + titulo +"\n"+
+                "Autor: " + autor +"\n" +
                 "ISBN: " + iSBN + "\n"+
-                "estado='" + estado+"\n";
+                "Estado: " + estado+"\n";
     }
 }

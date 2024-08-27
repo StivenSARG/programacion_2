@@ -49,11 +49,13 @@ public class Main {
                     break;
                 case 7:
                     System.out.println("Saliendo del menú");
+                    break;
                 default:
                     System.out.println("La opción no existe");
+                    break;
             }
 
-        }while (opcion == 7);
+        }while (opcion != 7);
         mensaje.close();
     }
 
@@ -179,8 +181,9 @@ public class Main {
                     System.out.println("Saliendo a menu principal.");
                 default:
                     System.out.println("La opción no existe");
+                    break;
             }
-        }while (opcion !=5);
+        }while (opcion !=4);
     }
 
     private static void registrarEmpleado(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
@@ -247,9 +250,9 @@ public class Main {
             System.out.println("Ingrese la opcion que desea realizar. ");
             System.out.println("1. Consultar lista empleados registrados. ");
             System.out.println("2.Consultar miembros asociados a la biblioteca.");
-            System.out.println("3.Consultar libros libros de la biblioteca. ");
+            System.out.println("3.Consultar libros de la biblioteca. ");
             System.out.println("4.Consultar prestamos realizados. ");
-            System.out.println("4.Salir");
+            System.out.println("5.Salir");
             opcion = mensaje.nextInt();
 
             switch (opcion){
@@ -272,6 +275,7 @@ public class Main {
                     System.out.println("Saliendo al menu principal");
                 default:
                     System.out.println("La opcion no exite");
+                    break;
             }
         }while( opcion != 5);
 
