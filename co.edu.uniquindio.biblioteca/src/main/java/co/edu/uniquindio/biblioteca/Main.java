@@ -382,6 +382,7 @@ public class Main {
         String titulo = mensaje.nextLine();
         System.out.println("Ingrese el ID del miembro que realiza la devolución:");
         String idMiembro = mensaje.nextLine();
+
         Libro libro = null;
         for (Libro devolver : gestionBiblioteca.getListaLibros()) {
             if (devolver.getTitulo().equalsIgnoreCase(titulo)) {

@@ -42,6 +42,23 @@ public class Bibliotecario extends Empleado implements IBibliotecario, IGestiona
 
     @Override
     public void registrarDevolucion(Libro libro, Miembro miembro) {
+        libro.setEstado("Disponible");
+
+        Prestamo prestamoEliminar = null;
+        for(Prestamo prestamo : gestionBiblioteca.getListaPrestamo()){
+            if(prestamo.getLibro().equals(libro) && prestamo.getMiembro().equals(miembro)){
+                prestamoEliminar = prestamo;
+                break;
+
+            }
+        }
+        if (prestamoEliminar != null){
+            gestionBiblioteca.getListaPrestamo().remove(prestamoEliminar);
+            System.out.println("Devolucion registrada ");
+        }else{
+            System.out.println("No se encontro el prestamo asociado a la devolucion");
+        }
+
 
     }
 
