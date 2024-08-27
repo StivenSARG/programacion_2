@@ -408,7 +408,7 @@ public class Main {
     }
 
     private static void registrarMulta(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
-        mensaje.nextLine(); // Consumir la nueva línea
+        mensaje.nextLine();
         System.out.println("Ingrese el ID del miembro asociado al préstamo:");
         String idMiembro = mensaje.nextLine();
         Prestamo prestamo = null;
@@ -428,12 +428,6 @@ public class Main {
             System.out.println("No se encontró un préstamo para el miembro con ID: " + idMiembro);
         }
     }
-
-
-
-
-
-
 }
 
 
