@@ -3,6 +3,8 @@ package model;
 import services.IBibliotecario;
 import services.IGestionarInventario;
 
+import java.time.LocalDate;
+
 public class Bibliotecario extends Empleado implements IBibliotecario, IGestionarInventario {
     private GestionBiblioteca gestionBiblioteca;
 
@@ -12,12 +14,9 @@ public class Bibliotecario extends Empleado implements IBibliotecario, IGestiona
 
     public Bibliotecario(String nombre, String idEmpleado,GestionBiblioteca gestionBiblioteca) {
         super(nombre, idEmpleado);
+        this.gestionBiblioteca = gestionBiblioteca;
     }
 
-    @Override
-    public void gestionarPrestamo() {
-
-    }
 
     @Override
     public void eliminarLibro(Libro libro) {
@@ -34,6 +33,16 @@ public class Bibliotecario extends Empleado implements IBibliotecario, IGestiona
     }
     public void setGestionBiblioteca(GestionBiblioteca gestionBiblioteca) {
         this.gestionBiblioteca = gestionBiblioteca;
+    }
+
+    @Override
+    public void registrarMulta(Prestamo prestamo, LocalDate fechaLimite) {
+
+    }
+
+    @Override
+    public void registrarDevolucion(Libro libro, Miembro miembro) {
+
     }
 
     @Override

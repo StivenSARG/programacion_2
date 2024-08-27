@@ -2,6 +2,7 @@ package co.edu.uniquindio.biblioteca;
 
 import model.*;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
@@ -16,49 +17,44 @@ public class Main {
 
         do{
             System.out.println("\nGestión Biblioteca");
-            System.out.println("1.Registrar nuevo empleado");
-            System.out.println("2.Registrar nuevo miembro");
-            System.out.println("3.Registrar nuevo libro");
-            System.out.println("4.Consultar empleados biblioteca");
-            System.out.println("5.Consultar miembros asociados a la biblioteca");
-            System.out.println("6.Consultar libros de la biblioteca");
-            System.out.println("7.Eliminar libro");
-            System.out.println("8.Salir");
+            System.out.println("1.Nuevo registro biblioteca");
+            System.out.println("2.Consultar registro biblioteca");
+            System.out.println("3.Eliminar libro");
+            System.out.println("4.Registrar prestamo");
+            System.out.println("5.Registrar devolucion");
+            System.out.println("6.Registrar multa");
+            System.out.println("7.salir");
             System.out.println("Seleccione una opción: ");
             opcion = mensaje.nextInt();
 
             switch (opcion){
                 case 1:
-                    registrarEmpleado(gestionBiblioteca, mensaje);
+                    nuevoRegistro(gestionBiblioteca,mensaje);
                     break;
                 case 2:
-                    registrarMiembro(gestionBiblioteca, mensaje);
+                    consultaBiblioteca(gestionBiblioteca, mensaje);
+
                     break;
                 case 3:
-                    registrarLibro(gestionBiblioteca, mensaje);
-                    break;
-                case 4:
-                    informacionEmpleados(gestionBiblioteca);
-                    break;
-                case 5:
-                    informacionMiembros(gestionBiblioteca);
-                    break;
-                case 6:
-                    informacionLibros(gestionBiblioteca);
-                    break;
-                case 7:
                     eliminarLibro(gestionBiblioteca, mensaje);
                     break;
-                case 8:
+                case 4:
+                    registrarPrestamo(gestionBiblioteca, mensaje);
+                    break;
+                case 5:
+                    registrarDevolucion(gestionBiblioteca, mensaje);
+                    break;
+                case 6:
+                    registrarMulta(gestionBiblioteca, mensaje);
+                    break;
+                case 7:
                     System.out.println("Saliendo del menú");
                 default:
                     System.out.println("La opción no existe");
             }
 
-        }while (opcion !=8);
+        }while (opcion == 7);
         mensaje.close();
-
-
     }
 
     private static GestionBiblioteca inicializarDatos() {
@@ -128,22 +124,22 @@ public class Main {
         gestionBiblioteca.getListaMiembro().add(miembro3);
 
         Prestamo prestamo1 = new Prestamo();
-        prestamo1.setFechaPrestamo("");
-        prestamo1.setFechaDevolucion("");
+        prestamo1.setFechaPrestamo(String.valueOf(LocalDate.of(2024, 8,27)));
+        prestamo1.setFechaDevolucion(String.valueOf(LocalDate.of(2024, 8,31)));
 
         prestamo1.setMiembro(miembro1);
         prestamo1.setLibro(libro2);
 
         Prestamo prestamo2 = new Prestamo();
-        prestamo2.setFechaPrestamo("");
-        prestamo2.setFechaDevolucion("");
+        prestamo2.setFechaPrestamo(String.valueOf(LocalDate.of(2024, 8,25)));
+        prestamo2.setFechaDevolucion(String.valueOf(LocalDate.of(2024, 9,5)));
 
         prestamo2.setMiembro(miembro2);
         prestamo2.setLibro(libro3);
 
         Prestamo prestamo3 = new Prestamo();
-        prestamo3.setFechaPrestamo("");
-        prestamo3.setFechaDevolucion("");
+        prestamo3.setFechaPrestamo(String.valueOf(LocalDate.of(2024, 8,20)));
+        prestamo3.setFechaDevolucion(String.valueOf(LocalDate.of(2024, 8,31)));
 
         prestamo3.setMiembro(miembro3);
         prestamo3.setLibro(libro4);
@@ -154,6 +150,37 @@ public class Main {
 
 
         return gestionBiblioteca;
+    }
+
+    private static void  nuevoRegistro(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
+
+        int opcion;
+        do{
+            System.out.println("Elija la opcion del nuevo registro que desea realizar: ");
+            System.out.println("1.Registro nuevo empleado");
+            System.out.println("2.Registro nuevo miembro");
+            System.out.println("3.Registro nuevo libro ");
+            System.out.println("4.Salir");
+            opcion = mensaje.nextInt();
+
+            switch (opcion){
+                case 1:
+                    registrarEmpleado(gestionBiblioteca, mensaje);
+                    break;
+
+                case 2:
+                    registrarMiembro(gestionBiblioteca, mensaje);
+                    break;
+
+                case 3:
+                    registrarLibro(gestionBiblioteca, mensaje);
+                    break;
+                case 4:
+                    System.out.println("Saliendo a menu principal.");
+                default:
+                    System.out.println("La opción no existe");
+            }
+        }while (opcion !=5);
     }
 
     private static void registrarEmpleado(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
@@ -212,6 +239,44 @@ public class Main {
 
     }
 
+
+    private static void consultaBiblioteca(GestionBiblioteca gestionBiblioteca,Scanner mensaje){
+
+       int opcion;
+        do{
+            System.out.println("Ingrese la opcion que desea realizar. ");
+            System.out.println("1. Consultar lista empleados registrados. ");
+            System.out.println("2.Consultar miembros asociados a la biblioteca.");
+            System.out.println("3.Consultar libros libros de la biblioteca. ");
+            System.out.println("4.Consultar prestamos realizados. ");
+            System.out.println("4.Salir");
+            opcion = mensaje.nextInt();
+
+            switch (opcion){
+                case 1:
+                    informacionEmpleados(gestionBiblioteca);
+                    break;
+
+                case 2:
+                    informacionMiembros(gestionBiblioteca);
+                    break;
+
+                case 3:
+                    informacionLibros(gestionBiblioteca);
+                    break;
+                case 4:
+                    informacionPrestamos(gestionBiblioteca);
+                    break;
+
+                case 5:
+                    System.out.println("Saliendo al menu principal");
+                default:
+                    System.out.println("La opcion no exite");
+            }
+        }while( opcion != 5);
+
+    }
+
     private static void informacionEmpleados(GestionBiblioteca gestionBiblioteca){
         for(Empleado empleado: gestionBiblioteca.getListaEmpleado()){
             System.out.println(empleado);
@@ -228,6 +293,12 @@ public class Main {
     private static void informacionLibros(GestionBiblioteca gestionBiblioteca){
         for(Libro libro: gestionBiblioteca.getListaLibros()){
             System.out.println(libro);
+        }
+    }
+
+    private static void informacionPrestamos(GestionBiblioteca gestionBiblioteca){
+        for ( Prestamo prestamo: gestionBiblioteca.getListaPrestamo()){
+            System.out.println(prestamo);
         }
     }
 
@@ -248,6 +319,108 @@ public class Main {
             bibliotecario.eliminarLibro(libroAEliminar);
         } else {
             System.out.println("El libro con el título '" + titulo + "' no se encuentra en el inventario.");
+        }
+    }
+
+    private static void registrarPrestamo(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
+        mensaje.nextLine();
+        System.out.println("Ingrese el ID del miembro que solicita el prestamo: ");
+        String idMiembro = mensaje.nextLine();
+        System.out.println("Ingrese el titulo del libro que desea prestar: ");
+        String titulo = mensaje.nextLine();
+        System.out.println("Ingrese la fecha del prestamo (YYYY-MM-DD): ");
+        String fechaPrestamoStr = mensaje.nextLine();
+        System.out.println("Ingrese fecha de devolucion (YYYY-MM-DD): ");
+        String fechaDevolucionStr = mensaje.nextLine();
+
+        Miembro miembro = null;
+        for(Miembro m: gestionBiblioteca.getListaMiembro()){
+            if(m.getIdMiembro().equals(idMiembro)){
+                miembro = m;
+                break;
+            }
+        }
+        if (miembro == null) {
+            System.out.println("No se en contro el ID ingresado. ");
+        }
+
+        Libro libro = null;
+        for (Libro l: gestionBiblioteca.getListaLibros()){
+            if(l.getTitulo().equalsIgnoreCase(titulo)){
+                libro = l;
+                break;
+            }
+        }
+        if(libro == null){
+            System.out.println("No se encontro un libro con el titulo ingresado.");
+        }
+
+        if (miembro != null && libro != null && libro.getEstado().equalsIgnoreCase("Disponible")){
+            Prestamo   nuevoPrestamo = new Prestamo();
+            nuevoPrestamo.setMiembro(miembro);
+            nuevoPrestamo.setLibro(libro);
+            nuevoPrestamo.setFechaPrestamo(fechaPrestamoStr);
+            nuevoPrestamo.setFechaDevolucion(fechaDevolucionStr);
+
+            gestionBiblioteca.getListaPrestamo().add(nuevoPrestamo);
+            libro.setEstado("prestado");
+            System.out.println("Prestamo registrado exitosamente. ");
+        }else{
+            System.out.println("El prestamo no se puede realizar revice los datos." );
+        }
+
+
+    }
+
+    private static void registrarDevolucion(GestionBiblioteca gestionBiblioteca, Scanner mensaje) {
+        mensaje.nextLine();
+        System.out.println("Ingrese el título del libro que se desea devolver:");
+        String titulo = mensaje.nextLine();
+        System.out.println("Ingrese el ID del miembro que realiza la devolución:");
+        String idMiembro = mensaje.nextLine();
+        Libro libro = null;
+        for (Libro devolver : gestionBiblioteca.getListaLibros()) {
+            if (devolver.getTitulo().equalsIgnoreCase(titulo)) {
+                libro = devolver;
+                break;
+            }
+        }
+
+        Miembro miembro = null;
+        for (Miembro m : gestionBiblioteca.getListaMiembro()) {
+            if (m.getIdMiembro().equals(idMiembro)) {
+                miembro = m;
+                break;
+            }
+        }
+
+        if (libro != null && miembro != null) {
+            Bibliotecario bibliotecario = gestionBiblioteca.getListaBibliotecario().get(0);
+            bibliotecario.registrarDevolucion(libro, miembro);
+        } else {
+            System.out.println("No se encontró el libro o el miembro en el sistema.");
+        }
+    }
+
+    private static void registrarMulta(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
+        mensaje.nextLine(); // Consumir la nueva línea
+        System.out.println("Ingrese el ID del miembro asociado al préstamo:");
+        String idMiembro = mensaje.nextLine();
+        Prestamo prestamo = null;
+        for (Prestamo p : gestionBiblioteca.getListaPrestamo()) {
+            if (p.getMiembro().getIdMiembro().equals(idMiembro)) {
+                prestamo = p;
+                break;
+            }
+        }
+        if (prestamo != null) {
+            System.out.println("Ingrese la fecha límite de devolución (YYYY-MM-DD):");
+            String fechaLimiteStr = mensaje.nextLine();
+            LocalDate fechaLimite = LocalDate.parse(fechaLimiteStr);
+            Bibliotecario bibliotecario = gestionBiblioteca.getListaBibliotecario().get(0);
+            bibliotecario.registrarMulta(prestamo, fechaLimite);
+        } else {
+            System.out.println("No se encontró un préstamo para el miembro con ID: " + idMiembro);
         }
     }
 

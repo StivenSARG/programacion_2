@@ -29,9 +29,8 @@ public class Miembro {
 
     @Override
     public String toString() {
-        return "Miembro{" +
-                "nombre='" + nombre + '\'' +
-                ", idMiembro='" + idMiembro + '\'' +
-                '}';
+        return "Miembro: " +"\n"+
+                "nombre: " + nombre + "\n" +
+                "Numero ID Miembro: " + idMiembro+"\n";
     }
 }
