@@ -27,5 +27,11 @@ public class Miembro {
         this.idMiembro = idMiembro;
     }
 
-
+    @Override
+    public String toString() {
+        return "Miembro{" +
+                "nombre='" + nombre + '\'' +
+                ", idMiembro='" + idMiembro + '\'' +
+                '}';
+    }
 }

@@ -1,8 +1,12 @@
 package services;
 
+import model.Empleado;
+import model.Libro;
+
 public interface IBibliotecario {
 
-    public void gestionarPrestamo();
+    void gestionarPrestamo();
+    void eliminarLibro(Libro libro);
 
 }
 

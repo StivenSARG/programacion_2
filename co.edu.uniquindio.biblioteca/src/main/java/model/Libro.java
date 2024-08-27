@@ -43,4 +43,13 @@ public class Libro {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", iSBN='" + iSBN + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
 }

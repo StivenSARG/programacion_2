@@ -70,6 +70,18 @@ public class GestionBiblioteca {
     public void setListaLibros(List<Libro> listaLibros) {
         this.listaLibros = listaLibros;
     }
+
+    @Override
+    public String toString() {
+        return "GestionBiblioteca{" +
+                "nombre='" + nombre + '\'' +
+                ", listaMiembro=" + listaMiembro +
+                ", listaEmpleado=" + listaEmpleado +
+                ", listaPrestamo=" + listaPrestamo +
+                ", listaBibliotecario=" + listaBibliotecario +
+                ", listaLibros=" + listaLibros +
+                '}';
+    }
 }
 
 

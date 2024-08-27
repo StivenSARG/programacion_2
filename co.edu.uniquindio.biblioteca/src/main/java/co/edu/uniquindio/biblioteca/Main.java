@@ -2,7 +2,6 @@ package co.edu.uniquindio.biblioteca;
 
 import model.*;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 
@@ -23,7 +22,9 @@ public class Main {
             System.out.println("4.Consultar empleados biblioteca");
             System.out.println("5.Consultar miembros asociados a la biblioteca");
             System.out.println("6.Consultar libros de la biblioteca");
-            System.out.println("7.Salir");
+            System.out.println("7.Eliminar libro");
+            System.out.println("8.Salir");
+            System.out.println("Seleccione una opción: ");
             opcion = mensaje.nextInt();
 
             switch (opcion){
@@ -37,7 +38,7 @@ public class Main {
                     registrarLibro(gestionBiblioteca, mensaje);
                     break;
                 case 4:
-                     informacionEmpleados(gestionBiblioteca);
+                    informacionEmpleados(gestionBiblioteca);
                     break;
                 case 5:
                     informacionMiembros(gestionBiblioteca);
@@ -46,10 +47,15 @@ public class Main {
                     informacionLibros(gestionBiblioteca);
                     break;
                 case 7:
+                    eliminarLibro(gestionBiblioteca, mensaje);
                     break;
+                case 8:
+                    System.out.println("Saliendo del menú");
+                default:
+                    System.out.println("La opción no existe");
             }
 
-        }while (opcion !=7);
+        }while (opcion !=8);
         mensaje.close();
 
 
@@ -61,6 +67,7 @@ public class Main {
         Bibliotecario bibliotecario1 = new Bibliotecario();
         bibliotecario1.setNombre("Cristian");
         bibliotecario1.setIdEmpleado("0123456789");
+        bibliotecario1.setGestionBiblioteca(gestionBiblioteca);
 
         gestionBiblioteca.getListaBibliotecario().add(bibliotecario1);
 
@@ -224,7 +231,25 @@ public class Main {
         }
     }
 
+    private static void eliminarLibro(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
+        mensaje.nextLine();
+        System.out.println("Ingrese el título del libro que desea eliminar:");
+        String titulo = mensaje.nextLine();
 
+        Libro libroAEliminar = null;
+        for (Libro libro : gestionBiblioteca.getListaLibros()) {
+            if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                libroAEliminar = libro;
+                break;
+            }
+        }
+        if (libroAEliminar != null) {
+            Bibliotecario bibliotecario = gestionBiblioteca.getListaBibliotecario().get(0);
+            bibliotecario.eliminarLibro(libroAEliminar);
+        } else {
+            System.out.println("El libro con el título '" + titulo + "' no se encuentra en el inventario.");
+        }
+    }
 
 
 
@@ -232,3 +257,10 @@ public class Main {
 
 
 }
+
+
+
+
+
+
+

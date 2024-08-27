@@ -25,4 +25,12 @@ public class Empleado {
     public void setIdEmpleado(String idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "nombre='" + nombre + '\'' +
+                ", idEmpleado='" + idEmpleado + '\'' +
+                '}';
+    }
 }
