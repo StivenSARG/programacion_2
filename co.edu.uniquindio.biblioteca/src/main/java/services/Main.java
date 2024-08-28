@@ -1,4 +1,4 @@
-package co.edu.uniquindio.biblioteca;
+package services;
 
 import model.*;
 
@@ -126,23 +126,25 @@ public class Main {
         gestionBiblioteca.getListaMiembro().add(miembro3);
 
         Prestamo prestamo1 = new Prestamo();
-        prestamo1.setFechaPrestamo(String.valueOf(LocalDate.of(2024, 8,27)));
-        prestamo1.setFechaDevolucion(String.valueOf(LocalDate.of(2024, 8,31)));
+        prestamo1.setFechaPrestamo(LocalDate.of(2024, 8,27));
+        prestamo1.setFechaDevolucion(LocalDate.of(2024, 8,31));
 
         prestamo1.setMiembro(miembro1);
         prestamo1.setLibro(libro2);
 
         Prestamo prestamo2 = new Prestamo();
-        prestamo2.setFechaPrestamo(String.valueOf(LocalDate.of(2024, 8,25)));
-        prestamo2.setFechaDevolucion(String.valueOf(LocalDate.of(2024, 9,5)));
+        prestamo2.setFechaPrestamo(LocalDate.of(2024, 8,25));
+        prestamo2.setFechaDevolucion(LocalDate.of(2024, 9,5));
 
         prestamo2.setMiembro(miembro2);
         prestamo2.setLibro(libro3);
 
         Prestamo prestamo3 = new Prestamo();
-        prestamo3.setFechaPrestamo(String.valueOf(LocalDate.of(2024, 8,20)));
-        prestamo3.setFechaDevolucion(String.valueOf(LocalDate.of(2024, 8,31)));
+        prestamo3.setFechaPrestamo(LocalDate.of(2024, 8,20));
+        prestamo3.setFechaDevolucion(LocalDate.of(2024, 8,31));
 
+        prestamo2.setMiembro(miembro2);
+        prestamo2.setLibro(libro3);
         prestamo3.setMiembro(miembro3);
         prestamo3.setLibro(libro4);
 
@@ -363,8 +365,6 @@ public class Main {
             Prestamo   nuevoPrestamo = new Prestamo();
             nuevoPrestamo.setMiembro(miembro);
             nuevoPrestamo.setLibro(libro);
-            nuevoPrestamo.setFechaPrestamo(fechaPrestamoStr);
-            nuevoPrestamo.setFechaDevolucion(fechaDevolucionStr);
 
             gestionBiblioteca.getListaPrestamo().add(nuevoPrestamo);
             libro.setEstado("prestado");
@@ -408,7 +408,7 @@ public class Main {
     }
 
     private static void registrarMulta(GestionBiblioteca gestionBiblioteca, Scanner mensaje){
-        mensaje.nextLine();
+        mensaje.nextLine(); // Consumir la nueva línea
         System.out.println("Ingrese el ID del miembro asociado al préstamo:");
         String idMiembro = mensaje.nextLine();
         Prestamo prestamo = null;

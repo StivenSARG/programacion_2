@@ -1,38 +1,45 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Prestamo {
-    public String fechaPrestamo;
-    public String fechaDevolucion;
+    private LocalDate fechaPrestamo;
+    private LocalDate fechaDevolucion;
     private Miembro miembro;
     private Libro libro;
+    private double multa;
 
     public Prestamo(){
     }
 
-    public Prestamo (String fechaPrestamo, String fechaDevolucion, Miembro miembro, Libro libro){
+    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaDevolucion, Miembro miembro, Libro libro, double multa) {
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
         this.miembro = miembro;
         this.libro = libro;
+        this.multa = multa;
     }
 
-    public String getFechaPrestamo() {
+    public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
-    public void setFechaPrestamo(String fechaPrestamo) {
+
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public String getFechaDevolucion() {
+    public LocalDate getFechaDevolucion() {
         return fechaDevolucion;
     }
-    public void setFechaDevolucion(String fechaDevolucion) {
+
+    public void setFechaDevolucion(LocalDate fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 
     public Miembro getMiembro() {
         return miembro;
     }
+
     public void setMiembro(Miembro miembro) {
         this.miembro = miembro;
     }
@@ -40,16 +47,27 @@ public class Prestamo {
     public Libro getLibro() {
         return libro;
     }
+
     public void setLibro(Libro libro) {
         this.libro = libro;
     }
 
+    public double getMulta() {
+        return multa;
+    }
+
+    public void setMulta(double multa) {
+        this.multa = multa;
+    }
+
     @Override
     public String toString() {
-        return "Prestamo" +"\n"+
-                "Fecha Prestamo: " + fechaPrestamo +"\n"+
-                "Fecha Devolucion: " + fechaDevolucion + "\n" +
-                "Miembro: " + miembro +"\n"+
-                "libro: " + libro+"\n";
+        return "Prestamo{" +
+                "fechaPrestamo=" + fechaPrestamo +
+                ", fechaDevolucion=" + fechaDevolucion +
+                ", miembro=" + miembro +
+                ", libro=" + libro +
+                ", multa=" + multa +
+                '}';
     }
 }
